@@ -81,7 +81,7 @@ export default async function RootLayout({
         <AppProvider session>
         <Providers>
           <NextIntlClientProvider messages={messages}>
-            <Navbar />
+            <Navbar email={jUser?.user?.email} />
 
             {children}
 
