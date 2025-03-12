@@ -19,6 +19,7 @@ import styles from "./layout.module.css";
 
 import AppProvider from "@/components/AppContext";
 import { getUser } from "@/actions/getUser";
+import EmailIsNotVerified from "@/components/EmailIsNotVerified";
 
 
 const geistSans = Geist({
@@ -81,6 +82,7 @@ export default async function RootLayout({
         <AppProvider session>
         <Providers>
           <NextIntlClientProvider messages={messages}>
+            <EmailIsNotVerified session={jUser} />
             <Navbar email={jUser?.user?.email} />
 
             {children}

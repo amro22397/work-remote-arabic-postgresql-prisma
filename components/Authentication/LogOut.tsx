@@ -3,6 +3,7 @@
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { Button } from "../ui/button";
+import { signOut } from "next-auth/react";
 
 const LogOut = () => {
   const locale = useLocale();
@@ -11,9 +12,10 @@ const LogOut = () => {
   return (
     <div className="hidden mr-3 lg:flex nav__item">
       <Button
-        className="px-6 py-2 text-white bg-red-500
+        className="px-6 pt-[22px] pb-6 text-white bg-red-500
               hover:bg-red-600 active:scale-95 rounded-md md:ml-5
-              text-xl"
+              text-xl cursor-pointer"
+        onClick={() => signOut({ callbackUrl: `/${locale}/login` })}
       >
         {navbarPage("Log Out")}
       </Button>

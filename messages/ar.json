@@ -24,6 +24,15 @@
     "Example6": "Example"
   },
 
+  "AreYouRecruiterPage": {
+    "title": "هل أنت صاحب عمل ؟",
+    "Description": "قم بإضافة الأعمال التي ترغب في أشخاص يعملون فيها عن بعد",
+    "Example3": "Example",
+    "Example4": "Example",
+    "Example5": "Example",
+    "Example6": "Example"
+  },
+
 
   "LoginPage": {
       "Login": "سجل الدخول",
@@ -133,6 +142,49 @@
       "Example5": "Example",
       "Example6": "Example",
       "Example7": "Example"
+    },
+
+    "AddJobPage": {
+      "p-JobTitle": "إسم العمل",
+      "JobType": "نوع العمل",
+      "On-site": "في الموقع",
+      "Hybrid": "خليط",
+      "Hybrid-Desc1": "(خليط بين العمل  ",
+      "Remote": "عن بعد",
+      "Hybrid-Desc2": "في الموقع وعن بعد)",
+      "JobDuration": "نوع الدوام",
+      "FullTime": "دوام كامل",
+      "PartTime": "دوام جزئي",
+      "Freelance": "عمل حر",
+      "Internship": "تدريب",
+      "WantProvideSalary": "هل تريد عرض راتب ؟",
+      "Salary": "الراتب",
+      "hourly": "في الساعة",
+      "daily": "في اليوم",
+      "monthly": "في الشهر",
+      "annually": "في السنة",
+      "SelectPayFrequence": "أختر معدل الدفع",
+      "Select City": "إختر مدينة",
+      "Select State": "إختر ولاية / محافظة",
+      "Select Country": "إختر دولة",
+      "WantShowContact": "هل تريد إضافة بيانات الإتصال الخاصة بك ؟",
+      "JobImage": "صورة للعمل",
+      "Add Image": "أضف صورة",
+      "ContactPerson": "بيانات التواصل",
+      "ContactName": "الإسم",
+      "ContactPhone": "رقم الهاتف",
+      "ContactEmail": "البريد الإلكتروني",
+      "PostTheJob": "أضف العرض",
+      "p-Description": "الوصف",
+      "ChooseCurrency": "أختر العملة",
+      "Another": "نوع آخر",
+      "Example12": "Example",
+      "Example12": "Example",
+      "Example12": "Example",
+      "Example12": "Example",
+      "Example12": "Example",
+      "Example12": "Example",
+      "Example12": "Example"
     },
 
 

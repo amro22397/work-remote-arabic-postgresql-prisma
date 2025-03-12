@@ -7,8 +7,8 @@ import ThemeSwitch from "./DarkSwitch";
 import { useLocale, useTranslations } from "next-intl";
 import { navigation } from "@/constants/navigation";
 import Logo from "./Logo";
-import { LogIn } from "lucide-react";
 import LogOut from "./Authentication/LogOut";
+import LogIn from "./Authentication/LogIn";
 
 export const Navbar = ({ email }: { email: string | null | undefined }) => {
   const locale = useLocale();
@@ -76,7 +76,7 @@ export const Navbar = ({ email }: { email: string | null | undefined }) => {
                   {navigation.map((item, index) => (
                     <Link
                       key={index}
-                      href="/"
+                      href={`/${locale}/${item.href}`}
                       className="w-full px-4 py-2 -ml-4 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 dark:focus:bg-gray-800 focus:outline-none"
                     >
                       {locale === "ar" ? item.name : item.enName}
@@ -100,7 +100,7 @@ export const Navbar = ({ email }: { email: string | null | undefined }) => {
             {navigation.map((item, index) => (
               <li className="mr-3 nav__item" key={index}>
                 <Link
-                  href="/"
+                  href={`/${locale}${item.href}`}
                   className="inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800"
                 >
                   {locale === "ar" ? item.name : item.enName}

@@ -307,7 +307,7 @@ export function RegisterForm({
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card
         className="bg-zinc-200/55 shadow-md
-      dark:bg-zinc-600 dark:shadow-md"
+      dark:bg-zinc-600 dark:shadow-md border-none"
       >
         <CardHeader>
           <CardTitle className="text-2xl dark:text-white">

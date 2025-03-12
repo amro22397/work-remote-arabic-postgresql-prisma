@@ -1,0 +1,18 @@
+export type JobData = {
+    jobTitle: string,
+    jobType: string,
+    jobDuration: string,
+    isThereSalary: boolean,
+    jobSalary: string,
+    jobSalaryPer: string,
+    country: string,
+    state: string,
+    city: string,
+    jobPhoto: string,
+    isThereContact: boolean,
+    contactPhoto: string,
+    contactName: string,
+    contactEmail: string,
+    contactNumber: string,
+    description: string,
+}

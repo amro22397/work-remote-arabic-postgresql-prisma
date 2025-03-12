@@ -35,7 +35,7 @@ const page = async () => {
 
   return (
     <>
-      <EmailIsNotVerified session={jUser} />
+      
 
       <Container>
         {/* <Hero /> */}

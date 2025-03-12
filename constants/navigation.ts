@@ -2,9 +2,9 @@
 export const navigation = [
 
     {
-        name: "هل أنت صاحب وظيفة ؟",
+        name: "هل أنت صاحب عمل ؟",
         enName: "Are you a recruiter ?",
-        href: "/are-you-an-recruiter",
+        href: "/are-you-a-recruiter",
         styles: "",
     },
 
