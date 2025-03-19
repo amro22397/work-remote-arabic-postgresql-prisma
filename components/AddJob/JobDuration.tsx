@@ -7,9 +7,10 @@ import { form } from '@nextui-org/react';
 import { JobData } from '@/types/jobData';
 import { Input } from '../ui/input';
 
-const JobDuration = ({ setFormData, formData }: {
+const JobDuration = ({ setFormData, formData, handleChange }: {
   setFormData: (e: any) => void,
-  formData: JobData
+  formData: JobData,
+  handleChange: (e: any) => void
 }) => {
 
     const addJobPage = useTranslations("AddJobPage");
@@ -76,14 +77,19 @@ const JobDuration = ({ setFormData, formData }: {
                 <RadioGroupItem value="another" id="another" />
                 <Label
                   htmlFor="another"
-                  className="flex flex-col justify-center gap-[6.5px]"
+                  className="flex flex-row justify-center items-center gap-[10.25px]"
                 >
                   <span className="">
                   {addJobPage("Another")}: 
                   </span>
 
-                  <Input 
+                  <input 
                   type='text'
+                  id="theOtherJobDuration"
+                  className='w-24 border border-gray-500/85 rounded-sm py-[7.5px] text-[14px]
+                  px-2'
+                  onChange={handleChange}
+                  required={formData.jobDuration === "another"}
                   />
                 </Label>
               </div>

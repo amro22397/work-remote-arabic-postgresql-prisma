@@ -16,6 +16,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 
 import styles from "./layout.module.css";
+import { Toaster } from "@/components/ui/sonner"
 
 import AppProvider from "@/components/AppContext";
 import { getUser } from "@/actions/getUser";
@@ -86,7 +87,7 @@ export default async function RootLayout({
             <Navbar email={jUser?.user?.email} />
 
             {children}
-
+            <Toaster />
             <Footer />
           </NextIntlClientProvider>
         </Providers>

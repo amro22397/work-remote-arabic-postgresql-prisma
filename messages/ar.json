@@ -178,7 +178,7 @@
       "p-Description": "الوصف",
       "ChooseCurrency": "أختر العملة",
       "Another": "نوع آخر",
-      "Example12": "Example",
+      "p-SalaryCurrency": "العملة",
       "Example12": "Example",
       "Example12": "Example",
       "Example12": "Example",
@@ -186,6 +186,40 @@
       "Example12": "Example",
       "Example12": "Example"
     },
+
+
+    "SearchJobsPage": {
+    "Filters": "التفضيلات",
+    "Work Remotely": "عمل عن بعد",
+    "DatePosted": "نشر منذ",
+    "AllDays": "أي وقت",
+    "OneWeek": "أسبوع",
+    "TwoWeeks": "أسبوعان",
+    "OneMonth": "شهر",
+    "Countries": "الدول",
+    "AllCountry": "كل الدول",
+    "Jobs": "وظائف",
+    "In": "في",
+    "EasyApply": "التقديم السهل",
+    "Example1": "Example",
+    "Example2": "Example",
+    "Example3": "Example",
+    "Example4": "Example",
+    "Example5": "Example",
+    "Example6": "Example",
+    "Example1": "Example",
+    "Example2": "Example",
+    "Example3": "Example",
+    "Example4": "Example",
+    "Example5": "Example",
+    "Example6": "Example",
+    "Example1": "Example",
+    "Example2": "Example",
+    "Example3": "Example",
+    "Example4": "Example",
+    "Example5": "Example",
+    "Example6": "Example"
+  },
 
 
   "Example": {

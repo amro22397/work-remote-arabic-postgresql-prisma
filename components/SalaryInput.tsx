@@ -60,7 +60,7 @@ const SalaryInput = ({
 
     setFormData({
       ...formData,
-      jobSalaryPer: salaryPer,
+      jobSalaryPer: e,
     });
   };
 
@@ -76,6 +76,7 @@ const SalaryInput = ({
               ...formData,
               isThereSalary: !wantShowSalary,
             });
+            // localStorage.setItem("isThereSalary", JSON.stringify(!wantShowSalary))
           }}
         />
         <Label htmlFor="isThereSalary" className="text-[16px]">
@@ -109,6 +110,9 @@ const SalaryInput = ({
 
         <Input
         type="text"
+        placeholder={addJobPage("p-SalaryCurrency")}
+        className="w-[150px] py-[18px] text-lg border-gray-500/85 rounded-sm"
+
         />
 
         <ShadcnSelect
@@ -116,7 +120,7 @@ const SalaryInput = ({
           onValueChange={handleSelectChange}
           disabled={!wantShowSalary}
         >
-          <SelectTrigger className="w-[225px] z-50" dir="ltr">
+          <SelectTrigger className="w-[200px] z-50" dir="ltr">
             <SelectValue placeholder={addJobPage("SelectPayFrequence")} />
           </SelectTrigger>
           <SelectContent className="z-50 bg-white">

@@ -4,12 +4,10 @@ import { model, models, Schema } from "mongoose";
 const jobFormSchema = new Schema({
     jobTitle: {
         type: String,
-        // unique: true,
     },
 
     jobType: {
         type: String,
-        // unique: true,
     },
 
     jobDuration: {
@@ -18,12 +16,12 @@ const jobFormSchema = new Schema({
     },
 
     isThereSalary: {
-        type: String,
+        type: Boolean,
         // unique: true,
     },
 
     jobSalary: {
-        type: String,
+        type: Number,
         // unique: true,
     },
 
@@ -53,7 +51,7 @@ const jobFormSchema = new Schema({
     },
 
     isThereContact: {
-        type: String,
+        type: Boolean,
         // unique: true,
     },
 
@@ -76,6 +74,17 @@ const jobFormSchema = new Schema({
         type: String,
         // unique: true,
     },
+
+    theOtherJobDuration: {
+        type: String,
+        // unique: true,
+    },
+
+    emailRef: {
+        type: String,
+        // unique: true,
+    },
+
 }, { timestamps: true })
 
 

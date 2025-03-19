@@ -10,7 +10,7 @@ const Logo = () => {
     <Link href="/">
     <span
       className="text-[30.25px] font-medium
-          bg-blue-500 active:bg-blue-700
+          bg-blue-500
           transition-all duration-100
            px-[22px] pt-[3px] pb-[9px] rounded-md text-white "
     >

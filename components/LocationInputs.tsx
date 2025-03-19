@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 
 import Select from "react-select";
 import { Country, State, City } from "country-state-city";
@@ -9,27 +9,31 @@ import { useLocale, useTranslations } from 'next-intl';
 
 
 const LocationInputs = ({ 
-    selectedCountry,
-    setSelectedCountry,
-    selectedState, 
-    setSelectedState,
-    selectedCity,
-    setSelectedCity,
+    // selectedCountry,
+    // setSelectedCountry,
+    // selectedState, 
+    // setSelectedState,
+    // selectedCity,
+    // setSelectedCity,
     formData,
     setFormData
     }: {
-        selectedCountry: any,
-    setSelectedCountry: (value: any) => void,
-    selectedState: any, 
-    setSelectedState: (value: any) => void,
-    selectedCity: any,
-    setSelectedCity: (value: any) => void,
+    //     selectedCountry: any,
+    // setSelectedCountry: (value: any) => void,
+    // selectedState: any, 
+    // setSelectedState: (value: any) => void,
+    // selectedCity: any,
+    // setSelectedCity: (value: any) => void,
     formData: JobData,
     setFormData: (value: JobData) => void
     }) => {
 
         const addJobPage = useTranslations("AddJobPage");
           const locale = useLocale()
+
+          const [selectedCountry, setSelectedCountry] = useState<any>(null);
+            const [selectedState, setSelectedState] = useState<any>(null);
+            const [selectedCity, setSelectedCity] = useState<any>(null);
 
   return (
     <div className="flex flex-row gap-2 w-full">
@@ -43,7 +47,7 @@ const LocationInputs = ({
               setSelectedCountry(val);
               setFormData({
                 ...formData,
-                country: selectedCountry.label,
+                country: val.label,
               });
             }}
             placeholder={addJobPage("Select Country")}
@@ -67,7 +71,7 @@ const LocationInputs = ({
               setSelectedState(val);
               setFormData({
                 ...formData,
-                state: selectedState.label,
+                state: val.label,
               });
             }}
             placeholder={addJobPage("Select State")}
@@ -92,7 +96,7 @@ const LocationInputs = ({
               setSelectedCity(val);
               setFormData({
                 ...formData,
-                city: selectedCity.label,
+                city: val.label,
               });
             }}
             placeholder={addJobPage("Select City")}

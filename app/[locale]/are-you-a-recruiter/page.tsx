@@ -28,7 +28,8 @@ const page = () => {
       <Link
       href={`/${locale}/are-you-a-recruiter/add-job`}
       className="bg-green-500 hover:bg-green-600 active:bg-green-700
-       text-white text-2xl py-2 px-5 cursor-pointer rounded-sm"
+       text-white text-2xl py-2 px-5 cursor-pointer rounded-sm
+       transition-all duration-100 ease-in-out"
       //  onClick={() => router.push(`/${locale}/are-you-a-recruiter/add-job`)}
       >
         أضف عمل
