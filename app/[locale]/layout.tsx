@@ -12,7 +12,7 @@ import { Providers } from "./provider";
 
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { routing } from "@/i18n/routing";
 
 import styles from "./layout.module.css";
@@ -65,7 +65,6 @@ export default async function RootLayout({
 
   const user = await getUser();
   const jUser = JSON.parse(JSON.stringify(user) || '{}')
-
 
   return (
     <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>

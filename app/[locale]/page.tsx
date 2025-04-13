@@ -14,6 +14,12 @@ const page = async () => {
  console.log(jUser)
 
  
+ if (locale === 'en') {
+
+  redirect(`/ar`)
+ }
+
+ 
   // if (!jUser?.user?.email) {
   //   redirect(`/${locale}/register`);
   // }
