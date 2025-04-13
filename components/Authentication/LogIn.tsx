@@ -10,7 +10,7 @@ const LogIn = () => {
     const navbarPage = useTranslations("NavbarPage");
 
   return (
-    <div className="hidden mr-3 lg:flex nav__item">
+    <div className="lg:mr-3 mr-0">
     <Link
       href={`/${locale}/login`}
       className="px-6 py-2 text-white bg-green-500

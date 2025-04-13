@@ -55,7 +55,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
 
   } catch (error: any) {
-    console.error('Error in handler', error);
+    console.log('Error in handler', error);
     res.status(500).json({
         success: false,
         message: "Internal Server Error", 

@@ -24,7 +24,7 @@ const SearchJobsBar = ({ jobTitle, setjobTitle , location, setLocation,
   setLocation: (value: string) => void,
   allCountriesCheck: boolean,
   setAllCountriesCheck: (value: boolean) => void,
-  fetchJobs: () => void,
+  fetchJobs?: any,
 }) => {
 
     const homePage = useTranslations("HomePage");
@@ -55,7 +55,7 @@ const SearchJobsBar = ({ jobTitle, setjobTitle , location, setLocation,
   return (
     <Container>
       <div
-        className="flex flex-row justify-center items-center max-w-5xl mx-auto
+        className="flex lg:flex-row flex-col justify-center items-center lg:max-w-5xl max-w-sm mx-auto
       gap-3"
       >
         <div className="w-full relative">
@@ -109,19 +109,19 @@ const SearchJobsBar = ({ jobTitle, setjobTitle , location, setLocation,
         <Button
           className="bg-blue-500 text-white py-[21.3625px] rounded-sm
         text-[22.5px] font-normal mx-1 cursor-pointer
-        hover:bg-blue-600 active:scale-95"
+        hover:bg-blue-600 active:scale-95 max-lg:w-[175px]"
           onClick={() => {
             if (allCountriesCheck === true) {
               router.push(
                 `/${locale}/search-jobs?jobTitle=${jobTitle}&location=`
               )
-              fetchJobs();
+              // fetchJobs();
 
             } else {
               router.push(
                 `/${locale}/search-jobs?jobTitle=${jobTitle}&location=${location}`
               )
-              fetchJobs();
+              // fetchJobs();
             }
           }
          }

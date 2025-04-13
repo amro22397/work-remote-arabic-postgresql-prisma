@@ -1,67 +1,28 @@
-'use client'
+import mongoose from "mongoose";
+import SearchJobs from "./SearchJobs"
+import { JobForm } from "@/models/jobForm";
 
-import { Item } from "@radix-ui/react-radio-group";
-import { toast } from "sonner";
-import SearchJobsBar from "./SearchJobsPage";
-import Filters from "@/components/SearchJobsPage/Filters";
-import SearchJobs from "@/components/SearchJobsPage/SearchJobs";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { useSearchParams } from "next/navigation";
+interface Props {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
 
-const page = () => {
 
-  const searchParams = useSearchParams() as any;
+const page = async ({ searchParams }: Props) => {
 
-  const urlLocation = searchParams?.get("location")
+  const params = await searchParams;
+  const urlLocation = params?.location;
 
   console.log(urlLocation)
-
-    const [jobTitle, setjobTitle] = useState("");
-  const [location, setLocation] = useState("");
-
-  const [isWorkRemotely, setIsWorkRemotely] = useState(false);
-  const [datePosted, setDatePosted] = useState("any-time");
-
-  const [allCountriesCheck, setAllCountriesCheck] = useState(false);
-
-  const [jobs, setJobs] = useState([]);
-
-
-  const fetchJobs = async () => {
-    
-    const res = await axios.get(`/api/get-jobs?jobTitle=${jobTitle}&location=${urlLocation}&isWorkRemotely=${isWorkRemotely}&datePosted=${datePosted}&allCountriesCheck=${allCountriesCheck}`)
-
-
-    setJobs(res.data.data);
-    console.log(jobs)
-  }
-
-  useEffect(() => {
-    
-    fetchJobs();
-  }, [urlLocation]);
+  
+  mongoose.connect(process.env.MONGO_URL as string);
+ 
+  const jobs = await JobForm.find({
+            country: { $regex: urlLocation, $options: "i" },
+          });
+  const jJobs= JSON.parse(JSON.stringify(jobs));
 
   return (
-    <>
-    {urlLocation}
-    <SearchJobsBar jobTitle={jobTitle} setjobTitle={setjobTitle}
-    location={location} setLocation={setLocation}
-    allCountriesCheck={allCountriesCheck} setAllCountriesCheck={setAllCountriesCheck}
-    fetchJobs={fetchJobs} />
-
-    <div className="flex flex-row justify-center items-start gap-5">
-
-        <Filters jobTitleSearch={jobTitle} setjobTitle={setjobTitle}
-    locationSearch={location} setLocation={setLocation}
-    allCountriesCheck={allCountriesCheck} setAllCountriesCheck={setAllCountriesCheck}
-    isWorkRemotely={isWorkRemotely} setIsWorkRemotely={setIsWorkRemotely}
-    datePosted={datePosted} setDatePosted={setDatePosted}
-    fetchJobs={fetchJobs} />
-
-        <SearchJobs jobs={jobs} />
-    </div>
-    </>    
+    <SearchJobs jobesFetched={jJobs} />
   );
 };
 

@@ -41,10 +41,10 @@ export default function ThemeSwitch() {
     )
 
     if (theme === 'dark') {
-        return <FiSun className="text-white ml-1 cursor-pointer hover:text-white/85 active:scale-95" size={25}
+        return <FiSun className="text-white lg:ml-1 ml-0 cursor-pointer hover:text-white/85 active:scale-95" size={25}
         onClick={toggleTheme} />
     } else {
-      return <FiMoon className="text-black ml-1 cursor-pointer hover:text-black/85 active:scale-95" size={25}
+      return <FiMoon className="text-black lg:ml-1 ml-0 cursor-pointer hover:text-black/85 active:scale-95" size={25}
          onClick={toggleTheme} />
     }
 

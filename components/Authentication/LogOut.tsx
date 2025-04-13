@@ -10,7 +10,7 @@ const LogOut = () => {
   const navbarPage = useTranslations("NavbarPage");
 
   return (
-    <div className="hidden mr-3 lg:flex nav__item">
+    <div className="lg:mr-3 mr-0">
       <Button
         className="px-6 pt-[22px] pb-6 text-white bg-red-500
               hover:bg-red-600 active:scale-95 rounded-md md:ml-5

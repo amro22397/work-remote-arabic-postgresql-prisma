@@ -37,13 +37,13 @@ const SearchJobs = ({ jobs }: {
     >
       <h3
         className="text-[25.5px] font-semibold flex flex-wrap gap-[6px] w-full
-      px-1 border-b border-gray-500/50 pb-5"
+      px-1 pb-5"
       >
         <span className="">{SearchJobsPage("Jobs")}</span>
 
         <span className="">{jobTitle}</span>
 
-        {location.trim() !== "" && (
+        {location?.trim() !== "" && (
           <>
             <span className="">{SearchJobsPage("In")}</span>
 
@@ -55,7 +55,8 @@ const SearchJobs = ({ jobs }: {
       <div className="flex flex-col justify-center items-center gap-4 w-full">
 
         {jobs.map((job, index) => (
-          <SingleJob job={job} key={job._id} stringTruncation={stringTruncation} />
+          <SingleJob job={job} key={job._id} stringTruncation={stringTruncation}
+          jobs={jobs} index={index} />
         ))}
       </div>
     </div>

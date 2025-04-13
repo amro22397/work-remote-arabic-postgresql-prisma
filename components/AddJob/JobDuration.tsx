@@ -35,26 +35,26 @@ const JobDuration = ({ setFormData, formData, handleChange }: {
             </h3>
 
             <RadioGroup
-              defaultValue="full-time"
+              defaultValue={addJobPage("FullTime")}
               dir={locale === "ar" ? "rtl" : "ltr"}
               onValueChange={(e) => handleRadioChange(e, "jobDuration")}
             >
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="full-time" id="full-time" />
+                <RadioGroupItem value={addJobPage("FullTime")} id="full-time" />
                 <Label htmlFor="full-time" className="font-medium">
                   {addJobPage("FullTime")}
                 </Label>
               </div>
 
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="part-time" id="part-time" />
+                <RadioGroupItem value={addJobPage("PartTime")} id="part-time" />
                 <Label htmlFor="part-time" className="font-medium">
                   {addJobPage("PartTime")}
                 </Label>
               </div>
 
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="freelance" id="freelance" />
+                <RadioGroupItem value={addJobPage("Freelance")} id="freelance" />
                 <Label
                   htmlFor="freelance"
                   className="flex flex-col justify-center gap-[6.5px]"
@@ -64,7 +64,7 @@ const JobDuration = ({ setFormData, formData, handleChange }: {
               </div>
 
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="internship" id="internship" />
+                <RadioGroupItem value={addJobPage("Internship")} id="internship" />
                 <Label
                   htmlFor="internship"
                   className="flex flex-col justify-center gap-[6.5px]"
@@ -74,7 +74,7 @@ const JobDuration = ({ setFormData, formData, handleChange }: {
               </div>
 
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="another" id="another" />
+                <RadioGroupItem value={addJobPage("Another")} id="another" />
                 <Label
                   htmlFor="another"
                   className="flex flex-row justify-center items-center gap-[10.25px]"

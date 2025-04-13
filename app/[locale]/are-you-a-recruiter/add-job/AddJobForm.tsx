@@ -12,7 +12,7 @@ import JobDuration from "@/components/AddJob/JobDuration";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 
-import { Textarea } from "@/components/ui/textarea"
+import { Textarea } from "@/components/ui/textarea";
 
 // import IntlTelInput from "react-intl-tel-input";
 // import "react-intl-tel-input/build/css/intlTelInput.css";
@@ -39,23 +39,19 @@ import LocationInputs from "@/components/LocationInputs";
 import axios from "axios";
 import { toast } from "sonner";
 import { LoaderCircle } from "lucide-react";
+import Link from "next/link";
 
-
-
-const AddJobForm = ({ email }: {
-    email: string | null | undefined;
-}) => {
-
-    const addJobPage = useTranslations("AddJobPage");
+const AddJobForm = ({ email }: { email: string | null | undefined }) => {
+  const addJobPage = useTranslations("AddJobPage");
   const locale = useLocale();
 
-  const [jobTypeValue, setJobTypeValue] = useState("remote");
+  const [jobTypeValue, setJobTypeValue] = useState(addJobPage("Remote"));
+  const [jobDuration, setJobDuration] = useState(addJobPage("FullTime"));
   const [salaryPer, setSalaryPer] = useState(addJobPage("hourly"));
 
   const [wantShowSalary, setWantShowSalary] = useState(true);
-  const [wantShowContact, setWantShowContact] = useState(true);
-
-  
+  const [wantShowContact, setWantShowContact] = useState(false);
+  const [wantEasyApply, setWantEasyApply] = useState(false);
 
   const [jobImage, setJobImage] = useState("");
 
@@ -70,18 +66,21 @@ const AddJobForm = ({ email }: {
     EditorState.createEmpty()
   );
 
-  const [formData, setFormData] = useState<JobData>({
+  const [formData, setFormData] = useState<any>({
     jobTitle: "",
-    jobType: "",
-    jobDuration: "",
+    jobType: jobTypeValue,
+    jobDuration: jobDuration,
     isThereSalary: wantShowSalary,
     jobSalary: "",
-    jobSalaryPer: "",
+    jobSalaryPer: salaryPer,
     country: "",
     state: "",
     city: "",
     jobPhoto: "",
+    jobFormLink: "",
+    wantEasyApply: wantEasyApply,
     isThereContact: wantShowContact,
+    currency: "",
     contactPhoto: "",
     contactName: "",
     contactEmail: "",
@@ -103,36 +102,31 @@ const AddJobForm = ({ email }: {
     setLoading(true);
 
     try {
-      
       const res = await axios.post("/api/job-form", {
         ...formData,
         emailRef: email,
-      })
+      });
 
       if (!res.data.success) {
-        toast.error(res.data.message)
+        toast.error(res.data.message);
       }
 
       if (res.data.success) {
-        toast.success(res.data.message)
+        toast.success(res.data.message);
       }
 
-      setLoading(false)
-
+      setLoading(false);
     } catch (error: any) {
-      
-        console.log(error);
-        toast.error("Client Error: " + error.message);
+      console.log(error);
+      toast.error("Client Error: " + error.message);
 
-        setLoading(false)
-
+      setLoading(false);
     }
-  }
+  };
 
   console.log(jobTypeValue);
 
-  console.log({...formData})
-
+  console.log({ ...formData });
 
   return (
     <Container
@@ -144,7 +138,7 @@ const AddJobForm = ({ email }: {
       <div className="flex flex-row justify-center items-start gap-16 w-full">
         <div className="flex flex-col justify-start items-start gap-8 w-full">
           <Input
-            type="job-title"
+            type="text"
             id="jobTitle"
             placeholder={addJobPage("p-JobTitle")}
             className="w-full py-[18px] text-lg border-gray-500/85 rounded-sm"
@@ -159,11 +153,12 @@ const AddJobForm = ({ email }: {
               formData={formData}
             />
 
-            <JobDuration setFormData={setFormData} formData={formData}
-            handleChange={handleChange} />
+            <JobDuration
+              setFormData={setFormData}
+              formData={formData}
+              handleChange={handleChange}
+            />
           </div>
-
-
 
           <SalaryInput
             wantShowSalary={wantShowSalary}
@@ -209,6 +204,39 @@ const AddJobForm = ({ email }: {
         <div className="flex flex-col justify-start items-center gap-2 w-full">
           <div className="my-1 flex flex-col gap-3 w-full">
             <div className="w-full flex flex-col gap-8">
+              <div className="flex flex-col gap-[6px]">
+                <div className="flex items-center space-x-2 mb-1">
+                  <Checkbox
+                    id="wantEasyApply"
+                    defaultChecked={wantEasyApply}
+                    onCheckedChange={() => {
+                      setWantEasyApply(!wantEasyApply);
+                      setFormData({
+                        ...formData,
+                        wantEasyApply: !wantEasyApply,
+                      });
+                    }}
+                  />
+                  <Label htmlFor="wantEasyApply" className="text-[16px]">
+                    {addJobPage("wantEasyApply")}
+                  </Label>
+                </div>
+
+                <Input
+                  type="text"
+                  id="jobFormLink"
+                  placeholder={addJobPage("p-jobFormLink")}
+                  className="w-full py-[18px] text-lg border-gray-500/85 rounded-sm"
+                  onChange={handleChange}
+                  disabled={wantEasyApply}
+                />
+
+                <Link href={!formData.jobFormLink || !wantEasyApply ? "#" : formData.jobFormLink} target="_blank"
+                className={` ${wantEasyApply ? 'opacity-70 hover:cursor-default': 'hover:underline active:text-black/75'}`} >
+                {addJobPage("TestTheJobFormLink")}
+                </Link>
+              </div>
+
               <div className="flex flex-col justify-start items-start gap-2 w-full">
                 {addJobPage("JobImage")}
 
@@ -256,10 +284,11 @@ const AddJobForm = ({ email }: {
 
                 <div className="flex flex-row items-center gap-2 w-full">
                   <Input
-                    type="contact-name"
+                    type="text"
                     id="contactName"
                     placeholder={addJobPage("ContactName")}
                     className="w-full py-[18px] text-lg border-gray-500/85 rounded-sm"
+                    disabled={!wantShowContact}
                     onChange={handleChange}
                   />
 
@@ -283,18 +312,23 @@ const AddJobForm = ({ email }: {
                 /> */}
 
                   <Input
-                    type="contact-email"
+                    type="text"
                     id="contactEmail"
                     placeholder={addJobPage("ContactEmail")}
                     className="w-full py-[18px] text-lg border-gray-500/85 rounded-sm"
                     onChange={handleChange}
+                    disabled={!wantShowContact}
                   />
                 </div>
 
-                <div className="py-1" dir="ltr">
+                <div
+                  className={`py-1 ${!wantShowContact ? "opacity-70" : ""}`}
+                  dir="ltr"
+                >
                   <PhoneInput
                     country={"us"}
                     value={phone}
+                    disabled={!wantShowContact}
                     onChange={(e) => {
                       setPhone(e);
                       setFormData({
@@ -313,12 +347,16 @@ const AddJobForm = ({ email }: {
       <Button
         className="bg-green-500 hover:bg-green-600 active:scale-95
       text-white text-xl py-[21.5px] my-7 cursor-pointer"
-      onClick={handleSubmit}
+        onClick={handleSubmit}
       >
-        {loading ? <LoaderCircle className="animate-spin" /> : addJobPage("PostTheJob")}
+        {loading ? (
+          <LoaderCircle className="animate-spin" />
+        ) : (
+          addJobPage("PostTheJob")
+        )}
       </Button>
     </Container>
-  )
-}
+  );
+};
 
-export default AddJobForm
+export default AddJobForm;

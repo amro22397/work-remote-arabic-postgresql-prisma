@@ -110,8 +110,11 @@ const SalaryInput = ({
 
         <Input
         type="text"
+        id="currency"
         placeholder={addJobPage("p-SalaryCurrency")}
         className="w-[150px] py-[18px] text-lg border-gray-500/85 rounded-sm"
+        disabled={!wantShowSalary}
+        onChange={handleChange}
 
         />
 
@@ -124,13 +127,13 @@ const SalaryInput = ({
             <SelectValue placeholder={addJobPage("SelectPayFrequence")} />
           </SelectTrigger>
           <SelectContent className="z-50 bg-white">
-            <SelectItem value="hourly">{addJobPage("hourly")}</SelectItem>
+            <SelectItem value={addJobPage("hourly")}>{addJobPage("hourly")}</SelectItem>
 
-            <SelectItem value="daily">{addJobPage("daily")}</SelectItem>
+            <SelectItem value={addJobPage("daily")}>{addJobPage("daily")}</SelectItem>
 
-            <SelectItem value="monthly">{addJobPage("monthly")}</SelectItem>
+            <SelectItem value={addJobPage("monthly")}>{addJobPage("monthly")}</SelectItem>
 
-            <SelectItem value="annually">{addJobPage("annually")}</SelectItem>
+            <SelectItem value={addJobPage("annually")}>{addJobPage("annually")}</SelectItem>
           </SelectContent>
         </ShadcnSelect>
       </div>

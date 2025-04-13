@@ -15,8 +15,8 @@ export const Navbar = ({ email }: { email: string | null | undefined }) => {
   const navbarPage = useTranslations("NavbarPage");
 
   return (
-    <div className="w-full">
-      <nav className="container relative flex flex-wrap items-center justify-between p-8 mx-auto lg:justify-between xl:px-1">
+    // <div className="w-full">
+      <nav className="container relative flex flex-wrap items-center justify-between p-8 mx-auto lg:justify-between xl:px-2">
         {/* Logo  */}
 
         {/* <span className="flex items-center space-x-2 text-2xl font-medium text-indigo-500 dark:text-gray-100">
@@ -35,7 +35,7 @@ export const Navbar = ({ email }: { email: string | null | undefined }) => {
         <Logo />
 
         {/* get started  */}
-        <div className="gap-3 nav__item mr-2 lg:flex flex-row items-center justify-center ml-auto lg:ml-0 lg:order-2">
+        <div className="gap-3 nav__item mr-2 lg:flex flex-row items-center justify-center ml-auto lg:ml-0 lg:order-2 hidden">
           <ThemeSwitch />
 
           {!email && <LogIn />}
@@ -71,8 +71,9 @@ export const Navbar = ({ email }: { email: string | null | undefined }) => {
                 </svg>
               </Disclosure.Button>
 
-              <Disclosure.Panel className="flex flex-wrap w-full my-5 lg:hidden">
-                <>
+              <Disclosure.Panel className="flex flex-wrap w-full my-5 lg:hidden items-center justify-center
+              mx-auto text-center">
+                <div className="w-full flex flex-col items-center justify-center">
                   {navigation.map((item, index) => (
                     <Link
                       key={index}
@@ -83,12 +84,15 @@ export const Navbar = ({ email }: { email: string | null | undefined }) => {
                     </Link>
                   ))}
 
-                  <div className="gap-3 nav__item mr-2 lg:hidden flex flex-row items-center justify-center ml-auto lg:ml-0 lg:order-2">
+                  <div className="lg:hidden flex flex-row items-center justify-center lg:order-2
+                  mt-2 gap-[10px]">
                     <ThemeSwitch />
 
-                    <LogIn />
+                    {!email && <LogIn />}
+
+                    {email && <LogOut />}
                   </div>
-                </>
+                </div>
               </Disclosure.Panel>
             </>
           )}
@@ -110,6 +114,6 @@ export const Navbar = ({ email }: { email: string | null | undefined }) => {
           </ul>
         </div>
       </nav>
-    </div>
+    // </div>
   );
 };

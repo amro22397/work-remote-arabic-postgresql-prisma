@@ -50,8 +50,23 @@ const jobFormSchema = new Schema({
         // unique: true,
     },
 
+    jobFormLink: {
+        type: String,
+        // unique: true,
+    },
+
+    wantEasyApply: {
+        type: Boolean,
+        // unique: true,
+    },
+
     isThereContact: {
         type: Boolean,
+        // unique: true,
+    },
+
+    currency:  {
+        type: String,
         // unique: true,
     },
 
@@ -76,6 +91,11 @@ const jobFormSchema = new Schema({
     },
 
     theOtherJobDuration: {
+        type: String,
+        // unique: true,
+    },
+
+    description: {
         type: String,
         // unique: true,
     },

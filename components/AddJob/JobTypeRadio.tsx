@@ -36,26 +36,26 @@ const JobTypeRadio = ({ setJobTypeValue, setFormData, formData }: {
             </h3>
 
             <RadioGroup
-              defaultValue="remote"
+              defaultValue={addJobPage("Remote")}
               dir={locale === "ar" ? "rtl" : "ltr"}
               onValueChange={(e) => handleRadioChange(e, "jobType")}
             >
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="remote" id="remote" />
+                <RadioGroupItem value={addJobPage("Remote")} id="remote" />
                 <Label htmlFor="remote" className="font-medium">
                   {addJobPage("Remote")}
                 </Label>
               </div>
 
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="on-site" id="on-site" />
+                <RadioGroupItem value={addJobPage("On-site")} id="on-site" />
                 <Label htmlFor="on-site" className="font-medium">
                   {addJobPage("On-site")}
                 </Label>
               </div>
 
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="hybrid" id="hybrid" />
+                <RadioGroupItem value={addJobPage("Hybrid")} id="hybrid" />
                 <Label
                   htmlFor="hybrid"
                   className="flex flex-col justify-center gap-[6.5px]"

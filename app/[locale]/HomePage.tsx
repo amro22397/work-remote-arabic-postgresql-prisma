@@ -74,7 +74,7 @@ const HomePage = ({ user }: { user: User | null | undefined }) => {
       </SectionTitle>
 
       <div
-        className="flex flex-row justify-center items-center max-w-5xl mx-auto
+        className="flex lg:flex-row flex-col justify-center items-center lg:max-w-5xl max-w-sm mx-auto
       gap-3"
       >
         <div className="w-full relative">
@@ -121,12 +121,12 @@ const HomePage = ({ user }: { user: User | null | undefined }) => {
             className="absolute left-3 top-[11.3725px] text-gray-600/90 dark:text-white/90"
             size={23}
           /> */}
-        </div>
+        </div> 
 
         <Button
           className="bg-blue-500 text-white py-[21.3625px] rounded-sm
         text-[22.5px] font-normal mx-1 cursor-pointer
-        hover:bg-blue-600 active:scale-95"
+        hover:bg-blue-600 active:scale-95 max-lg:w-[175px]"
           onClick={() => router.push(`/${locale}/search-jobs?jobTitle=${jobTitle}&location=${location}`)}
           // dark:bg-white dark:text-black"
         >
