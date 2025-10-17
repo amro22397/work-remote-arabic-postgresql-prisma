@@ -1,4 +1,4 @@
-import { getLocale, getTranslations } from "next-intl/server";
+import { getLocale } from "next-intl/server";
 
 import { getUser } from "@/actions/getUser";
 import { redirect } from "next/navigation";
@@ -7,13 +7,13 @@ import EmailIsNotVerified from "@/components/EmailIsNotVerified";
 import prisma from "@/lib/prisma";
 
 const page = async () => {
-  const homePage = await getTranslations("HomePage");
+  // const homePage = await getTranslations("HomePage");
 
   const user = await getUser();
  const jUser = JSON.parse(JSON.stringify(user) || '{}')
  const locale = await getLocale();
 
- console.log(jUser)
+ console.log(`Email is ${jUser?.user?.email}`)
 
  
  if (locale === 'en') {
@@ -22,9 +22,9 @@ const page = async () => {
  }
 
  
-  // if (!jUser?.user?.email) {
-  //   redirect(`/${locale}/register`);
-  // }
+  if (!jUser?.user?.email) {
+    redirect(`/${locale}/register`);
+  }
 
   const sessionUser = await prisma?.user?.findUnique({
     where: { email: jUser?.user?.email }
