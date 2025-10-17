@@ -71,11 +71,11 @@ const IfYouDontRecieve = ({ email }: {
     justify-center text-lg text-center flex flex-wrap">
       {emailIsNotVerified('IfYouHaveNotRecieved')}
         {loading ? <LoaderCircle className={`animate-spin ml-[6px]
-        ${locale === 'ar' && 'mr-[6px]'}`} /> : (
+        ${locale === "ar" && "mr-[6px]"}`} /> : (
           <span 
           className={`ml-[6px] text-indigo-200
           hover:underline active:text-indigo-300 cursor-pointer
-          ${locale === 'ar' && 'mr-[6px]'}`}
+          ${locale === "ar" && "mr-[6px]"}`}
           onClick={sendEmailAgain}
           >
           {emailIsNotVerified('click here')}

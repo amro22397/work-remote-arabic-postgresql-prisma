@@ -21,6 +21,8 @@ import { Toaster } from "@/components/ui/sonner"
 import AppProvider from "@/components/AppContext";
 import { getUser } from "@/actions/getUser";
 import EmailIsNotVerified from "@/components/EmailIsNotVerified";
+import prisma from "@/lib/prisma";
+
 
 
 const geistSans = Geist({
@@ -64,7 +66,12 @@ export default async function RootLayout({
 
 
   const user = await getUser();
-  const jUser = JSON.parse(JSON.stringify(user) || '{}')
+  const jUser = JSON.parse(JSON.stringify(user) || '{}');
+
+
+  // const sessionUser = await prisma?.user?.findUnique({
+  //   where: { email: jUser?.user?.email }
+  // })
 
   return (
     <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
@@ -76,13 +83,13 @@ export default async function RootLayout({
       </head>
 
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased
-        ${locale === "ar" && styles.arabic} overflow-x-hidden`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased relative
+        ${locale === 'ar' ? styles.arabic : styles.english} overflow-x-hidden`}
       >
         <AppProvider session>
         <Providers>
           <NextIntlClientProvider messages={messages}>
-            <EmailIsNotVerified session={jUser} />
+            {/* <EmailIsNotVerified session={sessionUser} /> */}
             <Navbar email={jUser?.user?.email} />
 
             {children}

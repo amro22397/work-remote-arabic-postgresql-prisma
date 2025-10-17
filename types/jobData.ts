@@ -1,5 +1,5 @@
 export type JobData = {
-    _id: string,
+    id: string,
     jobTitle: string,
     jobType: string,
     jobDuration: string,
@@ -23,5 +23,5 @@ export type JobData = {
     description: string,
     createdAt: Date,
     updatedAt: Date,
-    __v: number,
+    // __v: number,
 }

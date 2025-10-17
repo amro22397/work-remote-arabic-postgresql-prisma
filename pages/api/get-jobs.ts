@@ -1,9 +1,10 @@
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/pages/api/auth/[...nextauth]';
 import { NextApiRequest, NextApiResponse } from "next";
-import { connectToDatabase } from '@/lib/db';
-import { JobForm } from '@/models/jobForm';
-import mongoose from 'mongoose';
+import prisma from '@/lib/prisma';
+// import { connectToDatabase } from '@/lib/db';
+// import { JobForm } from '@/models/jobForm';
+// import mongoose from 'mongoose';
 // model import 
 
 
@@ -11,7 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
 
     
-    await connectToDatabase();
+    // await connectToDatabase();
     const session = await getServerSession(req, res, authOptions);
     console.log(session?.user?.email);
 
@@ -27,7 +28,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     console.log(jobTitle, location, isWorkRemotely, datePosted, allCountriesCheck)
 
-    mongoose.connect(process.env.MONGO_URL as string);
+    // mongoose.connect(process.env.MONGO_URL as string);
 
     let urlLocation = location;
 
@@ -39,9 +40,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (req.method === "GET") {
         // find from db
 
-        const jobs = await JobForm.find({
-          country: { $regex: urlLocation, $options: "i" },
-        });
+        // const jobs = await JobForm.find({
+        //   country: { $regex: urlLocation, $options: "i" },
+        // });
+
+        const jobs = await prisma.jobForm.findMany({
+          where: {
+            AND: [
+              { country: { contains: urlLocation, mode: 'insensitive' } },
+              {  }
+            ]
+          }
+        })
       
         return res.status(200).json({
             success: true,

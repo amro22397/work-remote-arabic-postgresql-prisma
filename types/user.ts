@@ -2,7 +2,7 @@
 
 export type User = {
     user: {
-        _id: string,
+        id: string,
         email: string,
         name: string,
         image: string,

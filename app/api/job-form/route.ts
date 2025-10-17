@@ -1,11 +1,12 @@
-import { JobForm } from "@/models/jobForm";
-import mongoose from "mongoose";
+// import { JobForm } from "@/models/jobForm";
+// import mongoose from "mongoose";
+import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
 
 export async function POST(req: Request) {
 
-    mongoose.connect(process.env.MONGO_URL as string);
+    // mongoose.connect(process.env.MONGO_URL as string);
 
     try {
 
@@ -13,7 +14,11 @@ export async function POST(req: Request) {
 
         console.log(body);
 
-    const jobData = await JobForm.create(body);
+    // const jobData = await JobForm.create(body);
+
+    const jobData = await prisma.jobForm.create({
+        data: body
+    })
 
     return NextResponse.json({
         success: true,
@@ -21,11 +26,11 @@ export async function POST(req: Request) {
         data: jobData
     })
 
-    } catch (error: any) {
+    } catch (error) {
         
         return NextResponse.json({
             success: false,
-            message: "API Error: " + error.message,
+            message: "API Error creating job form: " + error,
         })
 
     }

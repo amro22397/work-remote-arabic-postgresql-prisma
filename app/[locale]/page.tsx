@@ -3,6 +3,8 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { getUser } from "@/actions/getUser";
 import { redirect } from "next/navigation";
 import HomePage from "./HomePage";
+import EmailIsNotVerified from "@/components/EmailIsNotVerified";
+import prisma from "@/lib/prisma";
 
 const page = async () => {
   const homePage = await getTranslations("HomePage");
@@ -24,8 +26,15 @@ const page = async () => {
   //   redirect(`/${locale}/register`);
   // }
 
+  const sessionUser = await prisma?.user?.findUnique({
+    where: { email: jUser?.user?.email }
+  })
+
   return (
+    <>
+    <EmailIsNotVerified session={sessionUser} />
     <HomePage user={jUser} />
+    </>
   );
 };
 

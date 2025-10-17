@@ -1,12 +1,12 @@
 "use client";
 
-import { Item } from "@radix-ui/react-radio-group";
-import { toast } from "sonner";
+// import { Item } from "@radix-ui/react-radio-group";
+// import { toast } from "sonner";
 import SearchJobsBar from "./SearchJobsPage";
 import Filters from "@/components/SearchJobsPage/Filters";
 import SearchJobs from "../../../components/SearchJobsPage/SearchJobs";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState } from "react";
+// import axios from "axios";
 import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";

@@ -1,6 +1,6 @@
 'use client'
 
-import { useRouter } from "next/router"
+// import { useRouter } from "next/router"
 // import VerifyPage from "./VerifyPage"
 import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
@@ -95,7 +95,7 @@ const [loading, setLoading] = useState(false);
 
 
         if (loading) {
-            return <h1 className="flex justify-center items-center h-[75vh] mb-12">
+            return <h1 className="flex justify-center items-center h-screen">
                 <CircularProgress />
             </h1>
         }
@@ -103,12 +103,12 @@ const [loading, setLoading] = useState(false);
         // if change height change for loading and page
 
   return (
-    <div className="flex justify-center items-center h-[75vh] mb-12
+    <div className="flex justify-center items-center h-[90vh]
     ">
       <div className="w-full max-w-md">
         {verified && (
           <Alert variant="default" className="mb-5 bg-zinc-200/55 shadow-md dark:bg-zinc-100 dark:shadow-md
-          dark:border-none border-none">
+          dark:border-none">
             <div className="flex flex-row gap-[15px] items-center">
             <SquareCheckBig color="green" size={40} />
             <div className="flex flex-col justify-center">
@@ -122,8 +122,8 @@ const [loading, setLoading] = useState(false);
         )}
 
         {error && (
-          <Alert variant="destructive" className="mb-5 text-black bg-zinc-200/55 shadow-md dark:bg-zinc-100 dark:shadow-md
-          dark:border-none border-none">
+          <Alert variant="destructive" className="mb-5 bg-zinc-200/55 shadow-md dark:bg-zinc-100 dark:shadow-md
+          dark:border-none">
             <div className="flex flex-row gap-[14px] items-center">
             <CircleX color="red" size={40}/>
             <div className="flex flex-col justify-center">
